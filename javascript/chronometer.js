@@ -8,7 +8,7 @@ class Chronometer {
   }
   
   start(callback) {
-    this.currentTime= setInterval(()=> {
+    this.intervalId= setInterval(()=> {
       this.currentTime= this.currentTime+1 ;
     }, 1000);
   
@@ -17,8 +17,7 @@ class Chronometer {
   getMinutes() {
     // ... your code goes here
     const minutes= Math.floor (this.currentTime/60);
-    const twoDigitsMin= minutes.padStart(2,"0");
-    return twoDigitsMin
+        return twoDigitsMin
   }
   getSeconds() {
     // ... your code goes here
@@ -30,7 +29,7 @@ class Chronometer {
   computeTwoDigitNumber(value) {
     let twoDigits = value.toString();
       while (value.length < 2) {
-        numStr = '0' + numStr;
+        twoDigits = value.padStart(2,"0")
       }
       return twoDigits;
     // ... your code goes here
@@ -38,7 +37,7 @@ class Chronometer {
 
   stop() {
     // ... your code goes here
-    clearInterval(this.currentTime); 
+    clearInterval(this.intervalId); 
     this.intervalId= null;
   }
 
@@ -59,4 +58,3 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
-
