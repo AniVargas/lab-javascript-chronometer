@@ -11,25 +11,25 @@ class Chronometer {
     this.intervalId= setInterval(()=> {
       this.currentTime= this.currentTime+1 ;
     }, 1000);
+    callback(this.intervalId)
   
   }
 
   getMinutes() {
     // ... your code goes here
     const minutes= Math.floor (this.currentTime/60);
-        return twoDigitsMin
+    return minutes
   }
   getSeconds() {
     // ... your code goes here
     const seconds= Math.floor(this.currentTime%60);
-    const twoDigitsSec= seconds.padStart(2,"0");
-    return twoDigitsSec
+    return seconds
   }
 
   computeTwoDigitNumber(value) {
     let twoDigits = value.toString();
-      while (value.length < 2) {
-        twoDigits = value.padStart(2,"0")
+      if (value.length < 2) {
+        numStr = '0' + numStr;
       }
       return twoDigits;
     // ... your code goes here
@@ -47,7 +47,7 @@ class Chronometer {
   }
 
   split() {
-    let split= (minutes) + ":"+ (seconds)
+    let split= (this.getMinutes()) + ":"+ (this.getSeconds())
     // ... your code goes here
     return split
   }
